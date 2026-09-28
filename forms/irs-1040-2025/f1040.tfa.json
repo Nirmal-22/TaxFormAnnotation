@@ -1,0 +1,1526 @@
+{
+  "$schema": "../../schema/tfa.schema.json",
+  "specVersion": "1.0",
+  "form": {
+    "id": "irs-1040-2025",
+    "title": "U.S. Individual Income Tax Return",
+    "issuer": "IRS",
+    "formNumber": "1040",
+    "taxYear": 2025,
+    "revision": "2025 (Created 9/5/25)",
+    "source": {
+      "file": "f1040.pdf",
+      "url": "https://www.irs.gov/pub/irs-pdf/f1040.pdf",
+      "sha256": "3d31c226df0d189ced80e039d01cf0f8820c1019681a0f0ca6264de277b7e982"
+    },
+    "pages": [{"width": 612.0, "height": 792.0}, {"width": 612.0, "height": 792.0}]
+  },
+  "coordinates": {"unit": "pt", "origin": "top-left"},
+  "styles": {
+    "default": {"font": "Helvetica", "fontSize": 9, "padding": {"top": 1, "right": 2, "bottom": 1, "left": 2}},
+    "center": {"align": "center"},
+    "amount": {"align": "right", "format": {"type": "currency", "decimals": 0, "negative": "parens", "zero": "blank"}},
+    "amountDash": {"extends": "amount", "format": {"type": "currency", "decimals": 0, "negative": "parens", "zero": "dash"}},
+    "comb": {"font": "Courier", "fontSize": 10},
+    "zip": {"extends": "center", "format": {"type": "mask", "pattern": ["#####", "#####-####"]}},
+    "phone": {"format": {"type": "mask", "pattern": "(###) ###-####"}}
+  },
+  "fields": [
+    {
+      "id": "fiscalYearBegin",
+      "type": "text",
+      "page": 1,
+      "label": "Other tax year beginning (month/day)",
+      "rect": {"x": 228.8, "y": 48.5, "width": 88.0, "height": 11.0},
+      "source": {"path": "$.filing.fiscalYear.start"},
+      "style": {"extends": "center", "format": {"type": "date", "pattern": "MM/DD"}}
+    },
+    {
+      "id": "fiscalYearEnd",
+      "type": "text",
+      "page": 1,
+      "label": "Other tax year ending (month/day)",
+      "rect": {"x": 365.6, "y": 48.5, "width": 88.0, "height": 11.0},
+      "source": {"path": "$.filing.fiscalYear.end"},
+      "style": {"extends": "center", "format": {"type": "date", "pattern": "MM/DD"}}
+    },
+    {
+      "id": "fiscalYearEndYear",
+      "type": "text",
+      "page": 1,
+      "label": "Other tax year ending, 20__",
+      "rect": {"x": 468.6, "y": 48.5, "width": 17.0, "height": 11.0},
+      "source": {"path": "$.filing.fiscalYear.end"},
+      "style": {"extends": "center", "format": {"type": "date", "pattern": "YY"}}
+    },
+    {
+      "id": "section301_9100_2",
+      "type": "checkbox",
+      "page": 1,
+      "label": "Filed pursuant to section 301.9100-2",
+      "rect": {"x": 36.0, "y": 62.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.filing.section301_9100_2", "op": "truthy"}
+    },
+    {
+      "id": "combatZone",
+      "type": "checkbox",
+      "page": 1,
+      "label": "Combat zone",
+      "rect": {"x": 155.2, "y": 62.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.filing.combatZone", "op": "exists"}
+    },
+    {
+      "id": "combatZoneDetail",
+      "type": "text",
+      "page": 1,
+      "label": "Combat zone (detail)",
+      "rect": {"x": 209.8, "y": 60.5, "width": 161.0, "height": 11.0},
+      "source": {"path": "$.filing.combatZone.description"}
+    },
+    {
+      "id": "deceased",
+      "type": "checkbox",
+      "page": 1,
+      "label": "Deceased",
+      "rect": {"x": 374.8, "y": 62.0, "width": 8.0, "height": 8.0},
+      "checked": {
+        "any": [
+          {"path": "$.household.primary.dateOfDeath", "op": "exists"},
+          {"path": "$.household.spouse.dateOfDeath", "op": "exists"}
+        ]
+      }
+    },
+    {
+      "id": "primaryDeathMonth",
+      "type": "text",
+      "page": 1,
+      "label": "Deceased (primary): MM",
+      "rect": {"x": 417.6, "y": 60.5, "width": 14.4, "height": 11.0},
+      "source": {"path": "$.household.primary.dateOfDeath"},
+      "style": {"extends": "center", "format": {"type": "date", "pattern": "MM"}}
+    },
+    {
+      "id": "primaryDeathDay",
+      "type": "text",
+      "page": 1,
+      "label": "Deceased (primary): DD",
+      "rect": {"x": 439.2, "y": 60.5, "width": 14.4, "height": 11.0},
+      "source": {"path": "$.household.primary.dateOfDeath"},
+      "style": {"extends": "center", "format": {"type": "date", "pattern": "DD"}}
+    },
+    {
+      "id": "primaryDeathYear",
+      "type": "text",
+      "page": 1,
+      "label": "Deceased (primary): YYYY",
+      "rect": {"x": 460.8, "y": 60.5, "width": 21.6, "height": 11.0},
+      "source": {"path": "$.household.primary.dateOfDeath"},
+      "style": {"extends": "center", "format": {"type": "date", "pattern": "YYYY"}}
+    },
+    {
+      "id": "spouseDeathMonth",
+      "type": "text",
+      "page": 1,
+      "label": "Deceased (spouse): MM",
+      "rect": {"x": 511.2, "y": 60.5, "width": 14.4, "height": 11.0},
+      "source": {"path": "$.household.spouse.dateOfDeath"},
+      "style": {"extends": "center", "format": {"type": "date", "pattern": "MM"}}
+    },
+    {
+      "id": "spouseDeathDay",
+      "type": "text",
+      "page": 1,
+      "label": "Deceased (spouse): DD",
+      "rect": {"x": 532.8, "y": 60.5, "width": 14.4, "height": 11.0},
+      "source": {"path": "$.household.spouse.dateOfDeath"},
+      "style": {"extends": "center", "format": {"type": "date", "pattern": "DD"}}
+    },
+    {
+      "id": "spouseDeathYear",
+      "type": "text",
+      "page": 1,
+      "label": "Deceased (spouse): YYYY",
+      "rect": {"x": 554.4, "y": 60.5, "width": 21.6, "height": 11.0},
+      "source": {"path": "$.household.spouse.dateOfDeath"},
+      "style": {"extends": "center", "format": {"type": "date", "pattern": "YYYY"}}
+    },
+    {
+      "id": "otherDesignation",
+      "type": "checkbox",
+      "page": 1,
+      "label": "Other",
+      "rect": {"x": 36.0, "y": 74.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.filing.otherDesignations[*]", "op": "exists"}
+    },
+    {
+      "id": "otherDesignation1",
+      "type": "text",
+      "page": 1,
+      "label": "Other (1)",
+      "rect": {"x": 68.4, "y": 72.5, "width": 168.2, "height": 11.0},
+      "source": {"path": "$.filing.otherDesignations[0]"}
+    },
+    {
+      "id": "otherDesignation2",
+      "type": "text",
+      "page": 1,
+      "label": "Other (2)",
+      "rect": {"x": 238.6, "y": 72.5, "width": 170.8, "height": 11.0},
+      "source": {"path": "$.filing.otherDesignations[1]"}
+    },
+    {
+      "id": "otherDesignation3",
+      "type": "text",
+      "page": 1,
+      "label": "Other (3)",
+      "rect": {"x": 411.4, "y": 72.5, "width": 164.6, "height": 11.0},
+      "source": {"path": "$.filing.otherDesignations[2]"}
+    },
+    {
+      "id": "primaryFirstName",
+      "type": "text",
+      "page": 1,
+      "label": "Your first name and middle initial",
+      "rect": {"x": 36.0, "y": 94.0, "width": 215.25, "height": 14.0},
+      "source": {"template": "{$.household.primary.name.first} {$.household.primary.name.middleInitial}"},
+      "required": true
+    },
+    {
+      "id": "primaryLastName",
+      "type": "text",
+      "page": 1,
+      "label": "Your last name",
+      "rect": {"x": 253.0, "y": 94.0, "width": 214.25, "height": 14.0},
+      "source": {"template": "{$.household.primary.name.last} {$.household.primary.name.suffix}"},
+      "required": true
+    },
+    {
+      "id": "primarySsn",
+      "type": "text",
+      "page": 1,
+      "label": "Your social security number",
+      "rect": {"x": 469.0, "y": 94.0, "width": 107.0, "height": 14.0},
+      "comb": {
+        "groups": [
+          {"x": 0, "width": 31.65, "cells": 3},
+          {"x": 31.65, "width": 21.7, "cells": 2},
+          {"x": 53.35, "width": 53.65, "cells": 4}
+        ]
+      },
+      "source": {"path": "$.household.primary.ssn", "transform": [{"op": "digits"}]},
+      "style": "comb",
+      "required": true
+    },
+    {
+      "id": "spouseFirstName",
+      "type": "text",
+      "page": 1,
+      "label": "If joint return, spouse's first name and middle initial",
+      "rect": {"x": 36.0, "y": 118.0, "width": 215.25, "height": 14.0},
+      "source": {"template": "{$.household.spouse.name.first} {$.household.spouse.name.middleInitial}"},
+      "when": {"path": "$.filing.status", "op": "eq", "value": "married_filing_jointly"}
+    },
+    {
+      "id": "spouseLastName",
+      "type": "text",
+      "page": 1,
+      "label": "If joint return, spouse's last name",
+      "rect": {"x": 253.0, "y": 118.0, "width": 214.25, "height": 14.0},
+      "source": {"template": "{$.household.spouse.name.last} {$.household.spouse.name.suffix}"},
+      "when": {"path": "$.filing.status", "op": "eq", "value": "married_filing_jointly"}
+    },
+    {
+      "id": "spouseSsn",
+      "type": "text",
+      "page": 1,
+      "label": "Spouse's social security number",
+      "rect": {"x": 469.0, "y": 118.0, "width": 107.0, "height": 14.0},
+      "comb": {
+        "groups": [
+          {"x": 0, "width": 31.65, "cells": 3},
+          {"x": 31.65, "width": 21.7, "cells": 2},
+          {"x": 53.35, "width": 53.65, "cells": 4}
+        ]
+      },
+      "source": {"path": "$.household.spouse.ssn", "transform": [{"op": "digits"}]},
+      "when": {
+        "path": "$.filing.status",
+        "op": "in",
+        "value": ["married_filing_jointly", "married_filing_separately"]
+      },
+      "style": "comb"
+    },
+    {
+      "id": "street",
+      "type": "text",
+      "page": 1,
+      "label": "Home address (number and street)",
+      "rect": {"x": 36.0, "y": 142.0, "width": 380.85, "height": 14.0},
+      "source": {"path": "$.household.address.street"},
+      "required": true
+    },
+    {
+      "id": "apartment",
+      "type": "text",
+      "page": 1,
+      "label": "Apt. no.",
+      "rect": {"x": 418.6, "y": 142.0, "width": 48.65, "height": 14.0},
+      "source": {"path": "$.household.address.apartment"},
+      "style": "center"
+    },
+    {
+      "id": "city",
+      "type": "text",
+      "page": 1,
+      "label": "City, town, or post office",
+      "rect": {"x": 36.0, "y": 166.0, "width": 294.45, "height": 14.0},
+      "source": {"path": "$.household.address.city"},
+      "required": true
+    },
+    {
+      "id": "state",
+      "type": "text",
+      "page": 1,
+      "label": "State",
+      "rect": {"x": 332.2, "y": 166.0, "width": 63.05, "height": 14.0},
+      "source": {"path": "$.household.address.state"},
+      "style": "center"
+    },
+    {
+      "id": "zip",
+      "type": "text",
+      "page": 1,
+      "label": "ZIP code",
+      "rect": {"x": 397.0, "y": 166.0, "width": 70.25, "height": 14.0},
+      "source": {"path": "$.household.address.zip"},
+      "style": "zip"
+    },
+    {
+      "id": "foreignCountry",
+      "type": "text",
+      "page": 1,
+      "label": "Foreign country name",
+      "rect": {"x": 36.0, "y": 190.0, "width": 186.45, "height": 14.0},
+      "source": {"path": "$.household.address.foreign.country"}
+    },
+    {
+      "id": "foreignProvince",
+      "type": "text",
+      "page": 1,
+      "label": "Foreign province/state/county",
+      "rect": {"x": 224.2, "y": 190.0, "width": 171.05, "height": 14.0},
+      "source": {"path": "$.household.address.foreign.province"}
+    },
+    {
+      "id": "foreignPostalCode",
+      "type": "text",
+      "page": 1,
+      "label": "Foreign postal code",
+      "rect": {"x": 397.0, "y": 190.0, "width": 70.25, "height": 14.0},
+      "source": {"path": "$.household.address.foreign.postalCode"},
+      "style": "center"
+    },
+    {
+      "id": "mainHomeInUS",
+      "type": "checkbox",
+      "page": 1,
+      "label": "Main home (and spouse's, if joint) in the U.S. for more than half of 2025",
+      "rect": {"x": 568.0, "y": 146.75, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.filing.mainHomeInUS", "op": "truthy"}
+    },
+    {
+      "id": "campaignPrimary",
+      "type": "checkbox",
+      "page": 1,
+      "label": "Presidential Election Campaign: You",
+      "rect": {"x": 482.4, "y": 194.5, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.filing.presidentialElectionCampaign.primary", "op": "truthy"}
+    },
+    {
+      "id": "campaignSpouse",
+      "type": "checkbox",
+      "page": 1,
+      "label": "Presidential Election Campaign: Spouse",
+      "rect": {"x": 525.6, "y": 194.5, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.filing.presidentialElectionCampaign.spouse", "op": "truthy"},
+      "when": {"path": "$.filing.status", "op": "eq", "value": "married_filing_jointly"}
+    },
+    {
+      "id": "filingStatus",
+      "type": "choice",
+      "page": 1,
+      "label": "Filing Status",
+      "source": {"path": "$.filing.status"},
+      "options": [
+        {"value": "single", "rect": {"x": 97.6, "y": 206.0, "width": 8.0, "height": 8.0}, "label": "Single"},
+        {
+          "value": "married_filing_jointly",
+          "rect": {"x": 97.6, "y": 218.0, "width": 8.0, "height": 8.0},
+          "label": "Married filing jointly"
+        },
+        {
+          "value": "married_filing_separately",
+          "rect": {"x": 97.6, "y": 230.0, "width": 8.0, "height": 8.0},
+          "label": "Married filing separately (MFS)"
+        },
+        {
+          "value": "head_of_household",
+          "rect": {"x": 349.6, "y": 206.0, "width": 8.0, "height": 8.0},
+          "label": "Head of household (HOH)"
+        },
+        {
+          "value": "qualifying_surviving_spouse",
+          "rect": {"x": 349.6, "y": 218.0, "width": 8.0, "height": 8.0},
+          "label": "Qualifying surviving spouse (QSS)"
+        }
+      ],
+      "required": true
+    },
+    {
+      "id": "mfsSpouseName",
+      "type": "text",
+      "page": 1,
+      "label": "MFS: spouse's full name",
+      "rect": {"x": 180.0, "y": 240.0, "width": 144.0, "height": 12.0},
+      "source": {
+        "template": "{$.household.spouse.name.first} {$.household.spouse.name.middleInitial} {$.household.spouse.name.last}"
+      },
+      "when": {"path": "$.filing.status", "op": "eq", "value": "married_filing_separately"}
+    },
+    {
+      "id": "qualifyingPersonName",
+      "type": "text",
+      "page": 1,
+      "label": "HOH or QSS: qualifying child's name if not your dependent",
+      "rect": {"x": 362.0, "y": 246.0, "width": 214.0, "height": 12.0},
+      "source": {"path": "$.filing.qualifyingPersonName"},
+      "when": {"path": "$.filing.status", "op": "in", "value": ["head_of_household", "qualifying_surviving_spouse"]}
+    },
+    {
+      "id": "nonresidentSpouseElection",
+      "type": "checkbox",
+      "page": 1,
+      "label": "Treating a nonresident alien or dual-status alien spouse as a U.S. resident",
+      "rect": {"x": 97.6, "y": 258.12, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.filing.nonresidentSpouseElection", "op": "exists"}
+    },
+    {
+      "id": "nonresidentSpouseName",
+      "type": "text",
+      "page": 1,
+      "label": "Nonresident alien spouse's name",
+      "rect": {"x": 313.2, "y": 267.0, "width": 262.8, "height": 11.5},
+      "source": {"path": "$.filing.nonresidentSpouseElection.spouseName"}
+    },
+    {
+      "id": "digitalAssets",
+      "type": "choice",
+      "page": 1,
+      "label": "Digital Assets: received, sold, exchanged or disposed of a digital asset",
+      "source": {"path": "$.filing.digitalAssets"},
+      "options": [
+        {"value": true, "rect": {"x": 518.4, "y": 287.0, "width": 8.0, "height": 8.0}, "label": "Yes"},
+        {"value": false, "rect": {"x": 554.4, "y": 287.0, "width": 8.0, "height": 8.0}, "label": "No"}
+      ],
+      "required": true
+    },
+    {
+      "id": "moreThanFourDependents",
+      "type": "checkbox",
+      "page": 1,
+      "label": "More than four dependents (see instructions and check here)",
+      "rect": {"x": 79.7, "y": 368.5, "width": 8.0, "height": 8.0},
+      "checked": {"source": {"path": "$.household.dependents[*]", "aggregate": "count"}, "op": "gt", "value": 4}
+    },
+    {
+      "id": "dependents",
+      "type": "repeat",
+      "page": 1,
+      "label": "Dependents",
+      "description": "One column per dependent; child fields are positioned for Dependent 1.",
+      "source": {"path": "$.household.dependents"},
+      "maxItems": 4,
+      "offset": {"x": 108, "y": 0},
+      "overflow": {"strategy": "statement", "title": "Form 1040 (2025): Dependents (continued)"},
+      "fields": [
+        {
+          "id": "firstName",
+          "type": "text",
+          "label": "First name",
+          "rect": {"x": 145.0, "y": 309.0, "width": 106.25, "height": 12.0},
+          "source": {"path": "@.name.first"}
+        },
+        {
+          "id": "lastName",
+          "type": "text",
+          "label": "Last name",
+          "rect": {"x": 145.0, "y": 321.0, "width": 106.25, "height": 12.0},
+          "source": {"path": "@.name.last"}
+        },
+        {
+          "id": "ssn",
+          "type": "text",
+          "label": "SSN",
+          "rect": {"x": 145.0, "y": 333.0, "width": 106.25, "height": 12.0},
+          "comb": {
+            "groups": [
+              {"x": 0, "width": 35.25, "cells": 3},
+              {"x": 35.25, "width": 24.3, "cells": 2},
+              {"x": 59.55, "width": 46.7, "cells": 4}
+            ]
+          },
+          "source": {"path": "@.ssn", "transform": [{"op": "digits"}]},
+          "style": "comb"
+        },
+        {
+          "id": "relationship",
+          "type": "text",
+          "label": "Relationship",
+          "rect": {"x": 145.0, "y": 345.0, "width": 106.25, "height": 12.0},
+          "source": {"path": "@.relationship"}
+        },
+        {
+          "id": "livedWithYou",
+          "type": "checkbox",
+          "label": "Lived with you more than half of 2025",
+          "rect": {"x": 169.6, "y": 359.0, "width": 8.0, "height": 8.0},
+          "checked": {"path": "@.livedWithTaxpayer", "op": "truthy"}
+        },
+        {
+          "id": "livedInUS",
+          "type": "checkbox",
+          "label": "And in the U.S.",
+          "rect": {"x": 169.6, "y": 371.0, "width": 8.0, "height": 8.0},
+          "checked": {"path": "@.livedInUS", "op": "truthy"}
+        },
+        {
+          "id": "fullTimeStudent",
+          "type": "checkbox",
+          "label": "Full-time student",
+          "rect": {"x": 148.0, "y": 383.0, "width": 8.0, "height": 8.0},
+          "checked": {"path": "@.fullTimeStudent", "op": "truthy"}
+        },
+        {
+          "id": "disabled",
+          "type": "checkbox",
+          "label": "Permanently and totally disabled",
+          "rect": {"x": 198.4, "y": 383.0, "width": 8.0, "height": 8.0},
+          "checked": {"path": "@.permanentlyDisabled", "op": "truthy"}
+        },
+        {
+          "id": "credit",
+          "type": "choice",
+          "label": "Credit",
+          "source": {"path": "@.credit"},
+          "options": [
+            {
+              "value": "child_tax_credit",
+              "rect": {"x": 148.0, "y": 404.0, "width": 8.0, "height": 8.0},
+              "label": "Child tax credit"
+            },
+            {
+              "value": "credit_for_other_dependents",
+              "rect": {"x": 198.4, "y": 404.0, "width": 8.0, "height": 8.0},
+              "label": "Credit for other dependents"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "livedApartFromSpouse",
+      "type": "checkbox",
+      "page": 1,
+      "label": "MFS or HOH and lived apart from spouse for the last 6 months of 2025",
+      "rect": {"x": 95.6, "y": 424.5, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.filing.livedApartFromSpouse", "op": "truthy"}
+    },
+    {
+      "id": "line1a",
+      "type": "text",
+      "page": 1,
+      "label": "1a Total amount from Form(s) W-2, box 1",
+      "rect": {"x": 504.0, "y": 450.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.documents.w2[*].boxes['1']", "aggregate": "sum"},
+      "style": "amount"
+    },
+    {
+      "id": "line1b",
+      "type": "text",
+      "page": 1,
+      "label": "1b Household employee wages not reported on Form(s) W-2",
+      "rect": {"x": 504.0, "y": 462.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['1b']"},
+      "style": "amount"
+    },
+    {
+      "id": "line1c",
+      "type": "text",
+      "page": 1,
+      "label": "1c Tip income not reported on line 1a",
+      "rect": {"x": 504.0, "y": 474.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['1c']"},
+      "style": "amount"
+    },
+    {
+      "id": "line1d",
+      "type": "text",
+      "page": 1,
+      "label": "1d Medicaid waiver payments not reported on Form(s) W-2",
+      "rect": {"x": 504.0, "y": 486.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['1d']"},
+      "style": "amount"
+    },
+    {
+      "id": "line1e",
+      "type": "text",
+      "page": 1,
+      "label": "1e Taxable dependent care benefits from Form 2441, line 26",
+      "rect": {"x": 504.0, "y": 498.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['1e']"},
+      "style": "amount"
+    },
+    {
+      "id": "line1f",
+      "type": "text",
+      "page": 1,
+      "label": "1f Employer-provided adoption benefits from Form 8839, line 31",
+      "rect": {"x": 504.0, "y": 510.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['1f']"},
+      "style": "amount"
+    },
+    {
+      "id": "line1g",
+      "type": "text",
+      "page": 1,
+      "label": "1g Wages from Form 8919, line 6",
+      "rect": {"x": 504.0, "y": 522.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['1g']"},
+      "style": "amount"
+    },
+    {
+      "id": "line1hType",
+      "type": "text",
+      "page": 1,
+      "label": "1h Other earned income: type",
+      "rect": {"x": 344.2, "y": 534.0, "width": 131.0, "height": 11.0},
+      "source": {"path": "$.calculation.form1040['1h-type']"}
+    },
+    {
+      "id": "line1h",
+      "type": "text",
+      "page": 1,
+      "label": "1h Other earned income: amount",
+      "rect": {"x": 504.0, "y": 534.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['1h']"},
+      "style": "amount"
+    },
+    {
+      "id": "line1i",
+      "type": "text",
+      "page": 1,
+      "label": "1i Nontaxable combat pay election",
+      "rect": {"x": 410.4, "y": 546.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['1i']"},
+      "style": "amount"
+    },
+    {
+      "id": "line1z",
+      "type": "text",
+      "page": 1,
+      "label": "1z Add lines 1a through 1h",
+      "rect": {"x": 504.0, "y": 558.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['1z']"},
+      "style": "amount"
+    },
+    {
+      "id": "line2a",
+      "type": "text",
+      "page": 1,
+      "label": "2a Tax-exempt interest",
+      "rect": {"x": 252.0, "y": 570.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.documents['1099'][?@.form == 'INT'].boxes['8']", "aggregate": "sum"},
+      "style": "amount"
+    },
+    {
+      "id": "line2b",
+      "type": "text",
+      "page": 1,
+      "label": "2b Taxable interest",
+      "rect": {"x": 504.0, "y": 570.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.documents['1099'][?@.form == 'INT'].boxes['1']", "aggregate": "sum"},
+      "style": "amount"
+    },
+    {
+      "id": "line3a",
+      "type": "text",
+      "page": 1,
+      "label": "3a Qualified dividends",
+      "rect": {"x": 252.0, "y": 582.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.documents['1099'][?@.form == 'DIV'].boxes['1b']", "aggregate": "sum"},
+      "style": "amount"
+    },
+    {
+      "id": "line3b",
+      "type": "text",
+      "page": 1,
+      "label": "3b Ordinary dividends",
+      "rect": {"x": 504.0, "y": 582.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.documents['1099'][?@.form == 'DIV'].boxes['1a']", "aggregate": "sum"},
+      "style": "amount"
+    },
+    {
+      "id": "line3cLine3a",
+      "type": "checkbox",
+      "page": 1,
+      "label": "3c Child's dividends included in line 3a",
+      "rect": {"x": 283.8, "y": 596.5, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.childDividendsIn3a", "op": "truthy"}
+    },
+    {
+      "id": "line3cLine3b",
+      "type": "checkbox",
+      "page": 1,
+      "label": "3c Child's dividends included in line 3b",
+      "rect": {"x": 363.0, "y": 596.5, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.childDividendsIn3b", "op": "truthy"}
+    },
+    {
+      "id": "line4a",
+      "type": "text",
+      "page": 1,
+      "label": "4a IRA distributions",
+      "rect": {"x": 252.0, "y": 606.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['4a']"},
+      "style": "amount"
+    },
+    {
+      "id": "line4b",
+      "type": "text",
+      "page": 1,
+      "label": "4b IRA distributions: taxable amount",
+      "rect": {"x": 504.0, "y": 606.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['4b']"},
+      "style": "amount"
+    },
+    {
+      "id": "line4cRollover",
+      "type": "checkbox",
+      "page": 1,
+      "label": "4c Rollover",
+      "rect": {"x": 283.8, "y": 620.5, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.line4cRollover", "op": "truthy"}
+    },
+    {
+      "id": "line4cQcd",
+      "type": "checkbox",
+      "page": 1,
+      "label": "4c QCD",
+      "rect": {"x": 363.0, "y": 620.5, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.line4cQcd", "op": "truthy"}
+    },
+    {
+      "id": "line4cOther",
+      "type": "checkbox",
+      "page": 1,
+      "label": "4c Other (3)",
+      "rect": {"x": 427.8, "y": 620.5, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040['4c-other']", "op": "exists"}
+    },
+    {
+      "id": "line4cOtherCode",
+      "type": "text",
+      "page": 1,
+      "label": "4c Other (3): code",
+      "rect": {"x": 439.2, "y": 618.0, "width": 36.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['4c-other']"},
+      "style": "center"
+    },
+    {
+      "id": "line5a",
+      "type": "text",
+      "page": 1,
+      "label": "5a Pensions and annuities",
+      "rect": {"x": 252.0, "y": 630.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['5a']"},
+      "style": "amount"
+    },
+    {
+      "id": "line5b",
+      "type": "text",
+      "page": 1,
+      "label": "5b Pensions and annuities: taxable amount",
+      "rect": {"x": 504.0, "y": 630.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['5b']"},
+      "style": "amount"
+    },
+    {
+      "id": "line5cRollover",
+      "type": "checkbox",
+      "page": 1,
+      "label": "5c Rollover",
+      "rect": {"x": 283.8, "y": 644.5, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.line5cRollover", "op": "truthy"}
+    },
+    {
+      "id": "line5cPso",
+      "type": "checkbox",
+      "page": 1,
+      "label": "5c PSO",
+      "rect": {"x": 363.0, "y": 644.5, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.line5cPso", "op": "truthy"}
+    },
+    {
+      "id": "line5cOther",
+      "type": "checkbox",
+      "page": 1,
+      "label": "5c Other (3)",
+      "rect": {"x": 427.8, "y": 644.5, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040['5c-other']", "op": "exists"}
+    },
+    {
+      "id": "line5cOtherCode",
+      "type": "text",
+      "page": 1,
+      "label": "5c Other (3): code",
+      "rect": {"x": 439.2, "y": 642.0, "width": 36.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['5c-other']"},
+      "style": "center"
+    },
+    {
+      "id": "line6a",
+      "type": "text",
+      "page": 1,
+      "label": "6a Social security benefits",
+      "rect": {"x": 252.0, "y": 654.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['6a']"},
+      "style": "amount"
+    },
+    {
+      "id": "line6b",
+      "type": "text",
+      "page": 1,
+      "label": "6b Social security benefits: taxable amount",
+      "rect": {"x": 504.0, "y": 654.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['6b']"},
+      "style": "amount"
+    },
+    {
+      "id": "line6cLumpSum",
+      "type": "checkbox",
+      "page": 1,
+      "label": "6c Lump-sum election method",
+      "rect": {"x": 467.2, "y": 668.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.line6cLumpSum", "op": "truthy"}
+    },
+    {
+      "id": "line6dMfsApart",
+      "type": "checkbox",
+      "page": 1,
+      "label": "6d MFS and lived apart from spouse all year",
+      "rect": {"x": 467.2, "y": 680.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.line6dMfsApart", "op": "truthy"}
+    },
+    {
+      "id": "line7a",
+      "type": "text",
+      "page": 1,
+      "label": "7a Capital gain or (loss)",
+      "rect": {"x": 504.0, "y": 690.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['7a']"},
+      "style": "amount"
+    },
+    {
+      "id": "line7bNoScheduleD",
+      "type": "checkbox",
+      "page": 1,
+      "label": "7b Schedule D not required",
+      "rect": {"x": 153.2, "y": 704.5, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.line7bNoScheduleD", "op": "truthy"}
+    },
+    {
+      "id": "line7bChildGain",
+      "type": "checkbox",
+      "page": 1,
+      "label": "7b Includes child's capital gain or (loss)",
+      "rect": {"x": 261.2, "y": 704.5, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040['7b-child']", "op": "exists"}
+    },
+    {
+      "id": "line7bChildGainAmount",
+      "type": "text",
+      "page": 1,
+      "label": "7b Child's capital gain or (loss)",
+      "rect": {"x": 403.2, "y": 702.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['7b-child']"},
+      "style": "amount"
+    },
+    {
+      "id": "line8",
+      "type": "text",
+      "page": 1,
+      "label": "8 Additional income from Schedule 1, line 10",
+      "rect": {"x": 504.0, "y": 714.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['8']"},
+      "style": "amount"
+    },
+    {
+      "id": "line9",
+      "type": "text",
+      "page": 1,
+      "label": "9 Total income",
+      "rect": {"x": 504.0, "y": 726.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['9']"},
+      "style": "amount"
+    },
+    {
+      "id": "line10",
+      "type": "text",
+      "page": 1,
+      "label": "10 Adjustments to income from Schedule 1, line 26",
+      "rect": {"x": 504.0, "y": 738.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['10']"},
+      "style": "amount"
+    },
+    {
+      "id": "line11a",
+      "type": "text",
+      "page": 1,
+      "label": "11a Adjusted gross income",
+      "rect": {"x": 504.0, "y": 750.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['11a']"},
+      "style": "amount"
+    },
+    {
+      "id": "line11b",
+      "type": "text",
+      "page": 2,
+      "label": "11b Amount from line 11a (adjusted gross income)",
+      "rect": {"x": 504.0, "y": 36.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['11b']"},
+      "style": "amount"
+    },
+    {
+      "id": "line12aYouDependent",
+      "type": "checkbox",
+      "page": 2,
+      "label": "12a Someone can claim you as a dependent",
+      "rect": {"x": 203.6, "y": 50.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.youAreDependent", "op": "truthy"}
+    },
+    {
+      "id": "line12aSpouseDependent",
+      "type": "checkbox",
+      "page": 2,
+      "label": "12a Someone can claim your spouse as a dependent",
+      "rect": {"x": 304.4, "y": 50.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.spouseIsDependent", "op": "truthy"}
+    },
+    {
+      "id": "line12bSpouseItemizes",
+      "type": "checkbox",
+      "page": 2,
+      "label": "12b Spouse itemizes on a separate return",
+      "rect": {"x": 115.2, "y": 62.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.spouseItemizes", "op": "truthy"}
+    },
+    {
+      "id": "line12cDualStatus",
+      "type": "checkbox",
+      "page": 2,
+      "label": "12c You were a dual-status alien",
+      "rect": {"x": 304.4, "y": 62.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.dualStatusAlien", "op": "truthy"}
+    },
+    {
+      "id": "line12dYouBornBefore1961",
+      "type": "checkbox",
+      "page": 2,
+      "label": "12d You were born before January 2, 1961",
+      "rect": {"x": 153.2, "y": 74.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.household.primary.dateOfBirth", "op": "lt", "value": "1961-01-02"}
+    },
+    {
+      "id": "line12dYouBlind",
+      "type": "checkbox",
+      "page": 2,
+      "label": "12d You are blind",
+      "rect": {"x": 311.6, "y": 74.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.household.primary.blind", "op": "truthy"}
+    },
+    {
+      "id": "line12dSpouseBornBefore1961",
+      "type": "checkbox",
+      "page": 2,
+      "label": "12d Spouse was born before January 2, 1961",
+      "rect": {"x": 153.2, "y": 86.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.household.spouse.dateOfBirth", "op": "lt", "value": "1961-01-02"},
+      "when": {
+        "path": "$.filing.status",
+        "op": "in",
+        "value": ["married_filing_jointly", "married_filing_separately"]
+      }
+    },
+    {
+      "id": "line12dSpouseBlind",
+      "type": "checkbox",
+      "page": 2,
+      "label": "12d Spouse is blind",
+      "rect": {"x": 311.6, "y": 86.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.household.spouse.blind", "op": "truthy"},
+      "when": {
+        "path": "$.filing.status",
+        "op": "in",
+        "value": ["married_filing_jointly", "married_filing_separately"]
+      }
+    },
+    {
+      "id": "line12e",
+      "type": "text",
+      "page": 2,
+      "label": "12e Standard deduction or itemized deductions",
+      "rect": {"x": 504.0, "y": 96.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['12e']"},
+      "style": "amount"
+    },
+    {
+      "id": "line13a",
+      "type": "text",
+      "page": 2,
+      "label": "13a Qualified business income deduction",
+      "rect": {"x": 504.0, "y": 108.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['13a']"},
+      "style": "amount"
+    },
+    {
+      "id": "line13b",
+      "type": "text",
+      "page": 2,
+      "label": "13b Additional deductions from Schedule 1-A, line 38",
+      "rect": {"x": 504.0, "y": 120.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['13b']"},
+      "style": "amount"
+    },
+    {
+      "id": "line14",
+      "type": "text",
+      "page": 2,
+      "label": "14 Add lines 12e, 13a, and 13b",
+      "rect": {"x": 504.0, "y": 132.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['14']"},
+      "style": "amount"
+    },
+    {
+      "id": "line15",
+      "type": "text",
+      "page": 2,
+      "label": "15 Taxable income (if zero or less, enter -0-)",
+      "rect": {"x": 504.0, "y": 144.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['15']"},
+      "style": "amountDash"
+    },
+    {
+      "id": "line16Form8814",
+      "type": "checkbox",
+      "page": 2,
+      "label": "16 Tax includes Form 8814",
+      "rect": {"x": 312.6, "y": 158.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.line16Form8814", "op": "truthy"}
+    },
+    {
+      "id": "line16Form4972",
+      "type": "checkbox",
+      "page": 2,
+      "label": "16 Tax includes Form 4972",
+      "rect": {"x": 370.2, "y": 158.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.line16Form4972", "op": "truthy"}
+    },
+    {
+      "id": "line16Other",
+      "type": "checkbox",
+      "page": 2,
+      "label": "16 Tax includes other form (3)",
+      "rect": {"x": 427.8, "y": 158.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040['16-other']", "op": "exists"}
+    },
+    {
+      "id": "line16OtherForm",
+      "type": "text",
+      "page": 2,
+      "label": "16 Other form number",
+      "rect": {"x": 439.2, "y": 156.0, "width": 36.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['16-other']"},
+      "style": "center"
+    },
+    {
+      "id": "line16",
+      "type": "text",
+      "page": 2,
+      "label": "16 Tax",
+      "rect": {"x": 504.0, "y": 156.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['16']"},
+      "style": "amount"
+    },
+    {
+      "id": "line17",
+      "type": "text",
+      "page": 2,
+      "label": "17 Amount from Schedule 2, line 3",
+      "rect": {"x": 504.0, "y": 168.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['17']"},
+      "style": "amount"
+    },
+    {
+      "id": "line18",
+      "type": "text",
+      "page": 2,
+      "label": "18 Add lines 16 and 17",
+      "rect": {"x": 504.0, "y": 180.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['18']"},
+      "style": "amount"
+    },
+    {
+      "id": "line19",
+      "type": "text",
+      "page": 2,
+      "label": "19 Child tax credit or credit for other dependents",
+      "rect": {"x": 504.0, "y": 192.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['19']"},
+      "style": "amount"
+    },
+    {
+      "id": "line20",
+      "type": "text",
+      "page": 2,
+      "label": "20 Amount from Schedule 3, line 8",
+      "rect": {"x": 504.0, "y": 204.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['20']"},
+      "style": "amount"
+    },
+    {
+      "id": "line21",
+      "type": "text",
+      "page": 2,
+      "label": "21 Add lines 19 and 20",
+      "rect": {"x": 504.0, "y": 216.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['21']"},
+      "style": "amount"
+    },
+    {
+      "id": "line22",
+      "type": "text",
+      "page": 2,
+      "label": "22 Subtract line 21 from line 18 (if zero or less, enter -0-)",
+      "rect": {"x": 504.0, "y": 228.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['22']"},
+      "style": "amountDash"
+    },
+    {
+      "id": "line23",
+      "type": "text",
+      "page": 2,
+      "label": "23 Other taxes, including self-employment tax",
+      "rect": {"x": 504.0, "y": 240.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['23']"},
+      "style": "amount"
+    },
+    {
+      "id": "line24",
+      "type": "text",
+      "page": 2,
+      "label": "24 Total tax",
+      "rect": {"x": 504.0, "y": 252.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['24']"},
+      "style": "amount"
+    },
+    {
+      "id": "line25a",
+      "type": "text",
+      "page": 2,
+      "label": "25a Federal income tax withheld: Form(s) W-2",
+      "rect": {"x": 410.4, "y": 276.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.documents.w2[*].boxes['2']", "aggregate": "sum"},
+      "style": "amount"
+    },
+    {
+      "id": "line25b",
+      "type": "text",
+      "page": 2,
+      "label": "25b Federal income tax withheld: Form(s) 1099",
+      "rect": {"x": 410.4, "y": 288.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.documents['1099'][*].boxes['4']", "aggregate": "sum"},
+      "style": "amount"
+    },
+    {
+      "id": "line25c",
+      "type": "text",
+      "page": 2,
+      "label": "25c Federal income tax withheld: other forms",
+      "rect": {"x": 410.4, "y": 300.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['25c']"},
+      "style": "amount"
+    },
+    {
+      "id": "line25d",
+      "type": "text",
+      "page": 2,
+      "label": "25d Add lines 25a through 25c",
+      "rect": {"x": 504.0, "y": 312.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['25d']"},
+      "style": "amount"
+    },
+    {
+      "id": "line26",
+      "type": "text",
+      "page": 2,
+      "label": "26 2025 estimated tax payments",
+      "rect": {"x": 504.0, "y": 324.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['26']"},
+      "style": "amount"
+    },
+    {
+      "id": "formerSpouseSsn",
+      "type": "text",
+      "page": 2,
+      "label": "26 Former spouse's SSN (estimated payments made with former spouse)",
+      "rect": {"x": 237.6, "y": 348.0, "width": 86.4, "height": 12.0},
+      "comb": {
+        "groups": [
+          {"x": 0, "width": 27.35, "cells": 3},
+          {"x": 27.35, "width": 18.0, "cells": 2},
+          {"x": 45.35, "width": 41.05, "cells": 4}
+        ]
+      },
+      "source": {"path": "$.payments.formerSpouseSsn", "transform": [{"op": "digits"}]},
+      "style": "comb"
+    },
+    {
+      "id": "line27a",
+      "type": "text",
+      "page": 2,
+      "label": "27a Earned income credit (EIC)",
+      "rect": {"x": 410.4, "y": 360.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['27a']"},
+      "style": "amount"
+    },
+    {
+      "id": "line27bClergy",
+      "type": "checkbox",
+      "page": 2,
+      "label": "27b Clergy filing Schedule SE",
+      "rect": {"x": 467.2, "y": 374.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.line27bClergy", "op": "truthy"}
+    },
+    {
+      "id": "line27cNoEic",
+      "type": "checkbox",
+      "page": 2,
+      "label": "27c You do not want to claim the EIC",
+      "rect": {"x": 467.2, "y": 386.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.line27cNoEic", "op": "truthy"}
+    },
+    {
+      "id": "line28NoActc",
+      "type": "checkbox",
+      "page": 2,
+      "label": "28 You do not want to claim the ACTC",
+      "rect": {"x": 373.6, "y": 410.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.line28NoActc", "op": "truthy"}
+    },
+    {
+      "id": "line28",
+      "type": "text",
+      "page": 2,
+      "label": "28 Additional child tax credit (ACTC)",
+      "rect": {"x": 410.4, "y": 408.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['28']"},
+      "style": "amount"
+    },
+    {
+      "id": "line29",
+      "type": "text",
+      "page": 2,
+      "label": "29 American opportunity credit",
+      "rect": {"x": 410.4, "y": 420.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['29']"},
+      "style": "amount"
+    },
+    {
+      "id": "line30",
+      "type": "text",
+      "page": 2,
+      "label": "30 Refundable adoption credit",
+      "rect": {"x": 410.4, "y": 432.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['30']"},
+      "style": "amount"
+    },
+    {
+      "id": "line31",
+      "type": "text",
+      "page": 2,
+      "label": "31 Amount from Schedule 3, line 15",
+      "rect": {"x": 410.4, "y": 444.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['31']"},
+      "style": "amount"
+    },
+    {
+      "id": "line32",
+      "type": "text",
+      "page": 2,
+      "label": "32 Total other payments and refundable credits",
+      "rect": {"x": 504.0, "y": 456.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['32']"},
+      "style": "amount"
+    },
+    {
+      "id": "line33",
+      "type": "text",
+      "page": 2,
+      "label": "33 Total payments",
+      "rect": {"x": 504.0, "y": 468.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['33']"},
+      "style": "amount"
+    },
+    {
+      "id": "line34",
+      "type": "text",
+      "page": 2,
+      "label": "34 Amount overpaid",
+      "rect": {"x": 504.0, "y": 480.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['34']"},
+      "style": "amount"
+    },
+    {
+      "id": "line35aForm8888",
+      "type": "checkbox",
+      "page": 2,
+      "label": "35a Form 8888 is attached",
+      "rect": {"x": 467.2, "y": 494.0, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.calculation.form1040.checks.form8888", "op": "truthy"}
+    },
+    {
+      "id": "line35a",
+      "type": "text",
+      "page": 2,
+      "label": "35a Amount refunded to you",
+      "rect": {"x": 504.0, "y": 492.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['35a']"},
+      "style": "amount"
+    },
+    {
+      "id": "routingNumber",
+      "type": "text",
+      "page": 2,
+      "label": "35b Routing number",
+      "rect": {"x": 180.0, "y": 504.0, "width": 129.6, "height": 11.0},
+      "comb": {"cells": 9},
+      "source": {"path": "$.refund.directDeposit.routingNumber", "transform": [{"op": "digits"}]},
+      "style": "comb"
+    },
+    {
+      "id": "accountType",
+      "type": "choice",
+      "page": 2,
+      "label": "35c Account type",
+      "source": {"path": "$.refund.directDeposit.accountType"},
+      "options": [
+        {
+          "value": "checking",
+          "rect": {"x": 377.4, "y": 506.0, "width": 8.0, "height": 8.0},
+          "label": "Checking"
+        },
+        {
+          "value": "savings",
+          "rect": {"x": 435.0, "y": 506.0, "width": 8.0, "height": 8.0},
+          "label": "Savings"
+        }
+      ]
+    },
+    {
+      "id": "accountNumber",
+      "type": "text",
+      "page": 2,
+      "label": "35d Account number",
+      "rect": {"x": 180.0, "y": 516.0, "width": 244.8, "height": 11.0},
+      "comb": {"cells": 17},
+      "source": {"path": "$.refund.directDeposit.accountNumber"},
+      "style": "comb"
+    },
+    {
+      "id": "line36",
+      "type": "text",
+      "page": 2,
+      "label": "36 Amount of line 34 applied to your 2026 estimated tax",
+      "rect": {"x": 410.4, "y": 528.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['36']"},
+      "style": "amount"
+    },
+    {
+      "id": "line37",
+      "type": "text",
+      "page": 2,
+      "label": "37 Amount you owe",
+      "rect": {"x": 504.0, "y": 552.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['37']"},
+      "style": "amount"
+    },
+    {
+      "id": "line38",
+      "type": "text",
+      "page": 2,
+      "label": "38 Estimated tax penalty",
+      "rect": {"x": 410.4, "y": 564.0, "width": 71.25, "height": 12.0},
+      "source": {"path": "$.calculation.form1040['38']"},
+      "style": "amount"
+    },
+    {
+      "id": "thirdPartyDesignee",
+      "type": "choice",
+      "page": 2,
+      "label": "Third Party Designee: allow another person to discuss this return",
+      "source": {"path": "$.thirdPartyDesignee.allow"},
+      "options": [
+        {"value": true, "rect": {"x": 432.0, "y": 577.75, "width": 8.0, "height": 8.0}, "label": "Yes"},
+        {"value": false, "rect": {"x": 540.0, "y": 577.75, "width": 8.0, "height": 8.0}, "label": "No"}
+      ]
+    },
+    {
+      "id": "designeeName",
+      "type": "text",
+      "page": 2,
+      "label": "Designee's name",
+      "rect": {"x": 129.6, "y": 594.0, "width": 165.6, "height": 18.0},
+      "source": {"path": "$.thirdPartyDesignee.name"}
+    },
+    {
+      "id": "designeePhone",
+      "type": "text",
+      "page": 2,
+      "label": "Designee's phone no.",
+      "rect": {"x": 324.0, "y": 594.0, "width": 100.8, "height": 18.0},
+      "source": {"path": "$.thirdPartyDesignee.phone"},
+      "style": "phone"
+    },
+    {
+      "id": "designeePin",
+      "type": "text",
+      "page": 2,
+      "label": "Designee's personal identification number (PIN)",
+      "rect": {"x": 504.0, "y": 600.0, "width": 72.0, "height": 11.5},
+      "source": {"path": "$.thirdPartyDesignee.pin"},
+      "style": "center"
+    },
+    {
+      "id": "primaryOccupation",
+      "type": "text",
+      "page": 2,
+      "label": "Your occupation",
+      "rect": {"x": 325.0, "y": 646.0, "width": 135.05, "height": 20.0},
+      "source": {"path": "$.household.primary.occupation"}
+    },
+    {
+      "id": "primaryIpPin",
+      "type": "text",
+      "page": 2,
+      "label": "Your Identity Protection PIN",
+      "rect": {"x": 504.0, "y": 654.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.household.primary.identityProtectionPin"},
+      "style": "center"
+    },
+    {
+      "id": "spouseOccupation",
+      "type": "text",
+      "page": 2,
+      "label": "Spouse's occupation",
+      "rect": {"x": 325.0, "y": 676.0, "width": 135.05, "height": 20.0},
+      "source": {"path": "$.household.spouse.occupation"},
+      "when": {"path": "$.filing.status", "op": "eq", "value": "married_filing_jointly"}
+    },
+    {
+      "id": "spouseIpPin",
+      "type": "text",
+      "page": 2,
+      "label": "Spouse's Identity Protection PIN",
+      "rect": {"x": 504.0, "y": 684.0, "width": 72.0, "height": 12.0},
+      "source": {"path": "$.household.spouse.identityProtectionPin"},
+      "when": {"path": "$.filing.status", "op": "eq", "value": "married_filing_jointly"},
+      "style": "center"
+    },
+    {
+      "id": "phone",
+      "type": "text",
+      "page": 2,
+      "label": "Phone no.",
+      "rect": {"x": 127.6, "y": 696.0, "width": 145.25, "height": 12.0},
+      "source": {"path": "$.household.primary.contact.phone"},
+      "style": "phone"
+    },
+    {
+      "id": "email",
+      "type": "text",
+      "page": 2,
+      "label": "Email address",
+      "rect": {"x": 324.0, "y": 696.0, "width": 252.0, "height": 12.0},
+      "source": {"path": "$.household.primary.contact.email"}
+    },
+    {
+      "id": "preparerName",
+      "type": "text",
+      "page": 2,
+      "label": "Paid preparer's name",
+      "rect": {"x": 91.6, "y": 718.0, "width": 130.85, "height": 14.0},
+      "source": {"path": "$.preparer.name"}
+    },
+    {
+      "id": "preparerPtin",
+      "type": "text",
+      "page": 2,
+      "label": "Paid preparer's PTIN",
+      "rect": {"x": 454.6, "y": 718.0, "width": 55.85, "height": 14.0},
+      "source": {"path": "$.preparer.ptin"},
+      "style": "center"
+    },
+    {
+      "id": "preparerSelfEmployed",
+      "type": "checkbox",
+      "page": 2,
+      "label": "Paid preparer is self-employed",
+      "rect": {"x": 518.4, "y": 720.5, "width": 8.0, "height": 8.0},
+      "checked": {"path": "$.preparer.selfEmployed", "op": "truthy"}
+    },
+    {
+      "id": "firmName",
+      "type": "text",
+      "page": 2,
+      "label": "Firm's name",
+      "rect": {"x": 134.6, "y": 732.0, "width": 318.25, "height": 12.0},
+      "source": {"path": "$.preparer.firm.name"}
+    },
+    {
+      "id": "firmPhone",
+      "type": "text",
+      "page": 2,
+      "label": "Firm's phone no.",
+      "rect": {"x": 494.6, "y": 732.0, "width": 81.4, "height": 12.0},
+      "source": {"path": "$.preparer.firm.phone"},
+      "style": "phone"
+    },
+    {
+      "id": "firmAddress",
+      "type": "text",
+      "page": 2,
+      "label": "Firm's address",
+      "rect": {"x": 142.6, "y": 744.0, "width": 310.25, "height": 12.0},
+      "source": {"path": "$.preparer.firm.address"}
+    },
+    {
+      "id": "firmEin",
+      "type": "text",
+      "page": 2,
+      "label": "Firm's EIN",
+      "rect": {"x": 494.6, "y": 744.0, "width": 81.4, "height": 12.0},
+      "source": {"path": "$.preparer.firm.ein"},
+      "style": {"extends": "center", "format": {"type": "mask", "pattern": "##-#######"}}
+    }
+  ]
+}

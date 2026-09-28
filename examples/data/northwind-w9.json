@@ -1,0 +1,19 @@
+{
+  "_comment": "Fictional LLC taxed as an S corporation, furnishing a W-9 to a client.",
+  "entity": {
+    "legalName": "Northwind Analytics LLC",
+    "businessName": "Northwind Labs",
+    "taxClassification": "llc",
+    "llcTaxClassification": "s_corporation",
+    "hasForeignPartners": false,
+    "tin": { "type": "ein", "value": "12-3456789" },
+    "exemptions": {},
+    "address": { "line1": "500 Howard Street", "line2": "Suite 310", "city": "San Francisco", "state": "CA", "zip": "94105" },
+    "accountNumbers": ["NW-2025-0042", "NW-2025-0043"]
+  },
+  "requester": {
+    "name": "Contoso Health Partners",
+    "address": { "line1": "1 Harbor Plaza", "city": "Oakland", "state": "CA", "zip": "94607" }
+  },
+  "certification": { "date": "2025-09-26" }
+}

@@ -1,0 +1,522 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/tfa/1.0/tfa.schema.json",
+  "title": "Tax Form Annotation (TFA) 1.0",
+  "description": "Describes where and how values are printed on a specific revision of a tax form PDF. See docs/SPEC.md for normative semantics.",
+  "type": "object",
+  "required": ["specVersion", "form", "coordinates", "fields"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "specVersion": {
+      "const": "1.0",
+      "description": "Version of the TFA specification this file conforms to."
+    },
+    "form": { "$ref": "#/$defs/form" },
+    "coordinates": { "$ref": "#/$defs/coordinates" },
+    "fonts": {
+      "type": "object",
+      "description": "Custom fonts, keyed by the name used in styles. The standard PDF fonts (Helvetica, Courier, Times-Roman and their variants) are always available.",
+      "propertyNames": { "$ref": "#/$defs/identifier" },
+      "additionalProperties": { "$ref": "#/$defs/fontFace" }
+    },
+    "styles": {
+      "type": "object",
+      "description": "Named, reusable styles. The style named \"default\" is the implicit base of every other style.",
+      "propertyNames": { "$ref": "#/$defs/identifier" },
+      "additionalProperties": { "$ref": "#/$defs/style" }
+    },
+    "fields": {
+      "type": "array",
+      "description": "Top-level fields. Every top-level field must name its page.",
+      "items": { "$ref": "#/$defs/field", "required": ["page"] }
+    }
+  },
+  "additionalProperties": false,
+
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$",
+      "description": "Letters, digits, '_' and '-', starting with a letter. Dots and brackets are reserved for qualified instance ids such as dependents[2].ssn."
+    },
+
+    "form": {
+      "type": "object",
+      "required": ["id", "title", "source", "pages"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9._-]*$",
+          "description": "Stable identifier for this annotated form revision, e.g. irs-1040-2025."
+        },
+        "title": { "type": "string", "minLength": 1 },
+        "issuer": { "type": "string", "description": "Issuing agency, e.g. IRS or CA-FTB." },
+        "formNumber": { "type": "string", "description": "Form number as printed, e.g. 1040 or W-9." },
+        "taxYear": { "type": "integer", "minimum": 1900, "maximum": 2999 },
+        "revision": { "type": "string", "description": "Revision as printed on the form, e.g. Rev. March 2024." },
+        "source": {
+          "type": "object",
+          "required": ["file", "sha256"],
+          "properties": {
+            "file": { "type": "string", "description": "Path to the blank PDF, relative to this annotation file." },
+            "url": { "type": "string", "format": "uri", "description": "Where the blank PDF was obtained." },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$",
+              "description": "SHA-256 of the exact PDF these coordinates were measured against."
+            }
+          },
+          "additionalProperties": false
+        },
+        "pages": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Size of each page in points. Page numbers are 1-based: pages[0] is page 1.",
+          "items": {
+            "type": "object",
+            "required": ["width", "height"],
+            "properties": {
+              "width": { "type": "number", "exclusiveMinimum": 0 },
+              "height": { "type": "number", "exclusiveMinimum": 0 }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "coordinates": {
+      "type": "object",
+      "description": "Declares the coordinate system. In TFA 1.0 it is always points (1/72 in), measured from the top-left corner of the page's visible area as displayed.",
+      "required": ["unit", "origin"],
+      "properties": {
+        "unit": { "const": "pt" },
+        "origin": { "const": "top-left" }
+      },
+      "additionalProperties": false
+    },
+
+    "fontFace": {
+      "type": "object",
+      "required": ["file"],
+      "properties": {
+        "file": { "type": "string", "description": "TrueType font file, relative to this annotation file." }
+      },
+      "additionalProperties": false
+    },
+
+    "rect": {
+      "type": "object",
+      "description": "A box in points. (x, y) is the box's top-left corner, measured from the page's top-left corner.",
+      "required": ["x", "y", "width", "height"],
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "width": { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "type": "number", "exclusiveMinimum": 0 }
+      },
+      "additionalProperties": false
+    },
+
+    "offset": {
+      "type": "object",
+      "required": ["x", "y"],
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+
+    "path": {
+      "type": "string",
+      "pattern": "^[$@]",
+      "description": "A JSONPath query (RFC 9535 subset). $ is the root of the data set; @ is the current item inside a repeat. Examples: $.taxpayer.ssn, $.income.w2s[*].wages, $.forms1099[?@.type == 'INT'].amount, @.firstName"
+    },
+
+    "source": {
+      "description": "Where a field's value comes from. Exactly one of path, literal, template or coalesce.",
+      "type": "object",
+      "oneOf": [
+        { "required": ["path"] },
+        { "required": ["literal"] },
+        { "required": ["template"] },
+        { "required": ["coalesce"] }
+      ],
+      "properties": {
+        "path": { "$ref": "#/$defs/path" },
+        "aggregate": {
+          "enum": ["sum", "count", "min", "max", "first", "last", "join"],
+          "description": "Collapses a multi-valued path into one value. Only valid with path."
+        },
+        "separator": {
+          "type": "string",
+          "description": "Separator used by aggregate: join. Defaults to \", \"."
+        },
+        "literal": {
+          "description": "A constant value.",
+          "type": ["string", "number", "boolean"]
+        },
+        "template": {
+          "type": "string",
+          "description": "Text with {path} placeholders, e.g. \"{$.taxpayer.firstName} {$.taxpayer.middleInitial}\". Use {{ and }} for literal braces."
+        },
+        "coalesce": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/source" },
+          "description": "The first source that resolves to a value."
+        },
+        "default": {
+          "description": "Used when the source resolves to no value.",
+          "type": ["string", "number", "boolean"]
+        },
+        "transform": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/transform" },
+          "description": "Operations applied in order to the resolved value, before formatting."
+        }
+      },
+      "dependentSchemas": {
+        "aggregate": { "required": ["path"] },
+        "separator": { "required": ["aggregate"], "properties": { "aggregate": { "const": "join" } } }
+      },
+      "additionalProperties": false
+    },
+
+    "transform": {
+      "type": "object",
+      "required": ["op"],
+      "oneOf": [
+        {
+          "properties": { "op": { "const": "digits" } },
+          "description": "Removes every character that is not 0-9. \"123-45-6789\" becomes \"123456789\"."
+        },
+        {
+          "properties": {
+            "op": { "const": "slice" },
+            "start": { "type": "integer" },
+            "end": { "type": "integer" }
+          },
+          "required": ["start"],
+          "description": "Substring by character index; end is exclusive, negative indexes count from the end."
+        },
+        {
+          "properties": {
+            "op": { "const": "map" },
+            "values": { "type": "object", "additionalProperties": { "type": ["string", "number", "boolean", "null"] } },
+            "default": { "type": ["string", "number", "boolean"] }
+          },
+          "required": ["values"],
+          "description": "Looks the value up in a table, e.g. {\"c_corporation\": \"C\"}. Booleans and numbers are looked up by their JSON text (true, 12). A null entry maps the value to nothing (the box stays empty). With no match and no default the field is an error."
+        },
+        { "properties": { "op": { "const": "abs" } }, "description": "Absolute value of a number." },
+        { "properties": { "op": { "const": "negate" } }, "description": "Multiplies a number by -1." }
+      ],
+      "properties": {
+        "op": { "enum": ["digits", "slice", "map", "abs", "negate"] },
+        "start": true,
+        "end": true,
+        "values": true,
+        "default": true
+      },
+      "additionalProperties": false
+    },
+
+    "condition": {
+      "description": "A boolean test against the data. A comparison, or a combination of conditions with all / any / not.",
+      "type": "object",
+      "oneOf": [
+        { "$ref": "#/$defs/comparison" },
+        {
+          "type": "object",
+          "required": ["all"],
+          "properties": { "all": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/condition" } } },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["any"],
+          "properties": { "any": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/condition" } } },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["not"],
+          "properties": { "not": { "$ref": "#/$defs/condition" } },
+          "additionalProperties": false
+        }
+      ]
+    },
+
+    "comparison": {
+      "type": "object",
+      "required": ["op"],
+      "oneOf": [{ "required": ["path"] }, { "required": ["source"] }],
+      "properties": {
+        "path": { "$ref": "#/$defs/path" },
+        "source": { "$ref": "#/$defs/source" },
+        "op": {
+          "enum": ["eq", "ne", "gt", "gte", "lt", "lte", "in", "notIn", "exists", "notExists", "truthy", "falsy"]
+        },
+        "value": { "description": "Right-hand operand. An array for in / notIn; omitted for exists, notExists, truthy and falsy." }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "op": { "enum": ["eq", "ne", "gt", "gte", "lt", "lte"] } } },
+          "then": { "required": ["value"] }
+        },
+        {
+          "if": { "properties": { "op": { "enum": ["in", "notIn"] } } },
+          "then": { "required": ["value"], "properties": { "value": { "type": "array" } } }
+        },
+        {
+          "if": { "properties": { "op": { "enum": ["exists", "notExists", "truthy", "falsy"] } } },
+          "then": { "not": { "required": ["value"] } }
+        }
+      ],
+      "additionalProperties": false
+    },
+
+    "format": {
+      "description": "How a value becomes text.",
+      "type": "object",
+      "required": ["type"],
+      "oneOf": [
+        {
+          "properties": {
+            "type": { "const": "text" },
+            "case": { "enum": ["none", "upper", "lower"] }
+          },
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "enum": ["number", "currency"] },
+            "decimals": { "type": "integer", "minimum": 0, "maximum": 6 },
+            "thousands": { "type": "boolean", "description": "Group thousands with commas. Default true." },
+            "negative": { "enum": ["minus", "parens"], "description": "-1,234 or (1,234). Default minus." },
+            "zero": { "enum": ["show", "blank", "dash"], "description": "Print zero as a number, leave the box empty, or print -0-. Default show." },
+            "symbol": { "type": "string", "description": "currency only: prefix such as \"$\". Default none, since most forms pre-print it." },
+            "part": {
+              "enum": ["whole", "dollars", "cents"],
+              "description": "currency only: print the whole amount, only the dollars, or only the two cents digits (for forms with separate dollars and cents boxes)."
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "percent" },
+            "decimals": { "type": "integer", "minimum": 0, "maximum": 6 },
+            "input": { "enum": ["fraction", "percent"], "description": "fraction: 0.25 means 25%. percent: 25 means 25%. Default fraction." },
+            "symbol": { "type": "boolean", "description": "Append %. Default true." }
+          },
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "date" },
+            "pattern": { "type": "string", "description": "Tokens YYYY, YY, MM, M, DD, D; everything else is literal. Default MM/DD/YYYY." }
+          },
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": { "const": "mask" },
+            "pattern": {
+              "description": "Each # takes the next letter or digit of the value; other characters are literal. With a list, the first pattern whose # count equals the value's length is used.",
+              "oneOf": [
+                { "type": "string", "pattern": "#" },
+                { "type": "array", "minItems": 1, "items": { "type": "string", "pattern": "#" } }
+              ]
+            }
+          },
+          "required": ["pattern"],
+          "additionalProperties": false
+        }
+      ]
+    },
+
+    "padding": {
+      "oneOf": [
+        { "type": "number", "minimum": 0 },
+        {
+          "type": "object",
+          "properties": {
+            "top": { "type": "number", "minimum": 0 },
+            "right": { "type": "number", "minimum": 0 },
+            "bottom": { "type": "number", "minimum": 0 },
+            "left": { "type": "number", "minimum": 0 }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+
+    "style": {
+      "type": "object",
+      "description": "Presentation properties. Unset properties inherit from the extended style, then from the \"default\" style, then from the built-in defaults.",
+      "properties": {
+        "extends": { "$ref": "#/$defs/identifier", "description": "Name of a style to inherit from." },
+        "font": { "type": "string", "description": "A standard PDF font name or a key of fonts. Default Helvetica." },
+        "fontSize": { "type": "number", "exclusiveMinimum": 0, "description": "Points. Default 9." },
+        "minFontSize": { "type": "number", "exclusiveMinimum": 0, "description": "Smallest size overflow: shrink or wrap may use. Default 6." },
+        "color": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$", "description": "Default #000000." },
+        "align": { "enum": ["left", "center", "right"], "description": "Default left." },
+        "valign": { "enum": ["top", "middle", "bottom"], "description": "Default middle." },
+        "padding": { "$ref": "#/$defs/padding", "description": "Space between the rect edge and the text: a number for all sides, or per side. Default 1 top and bottom, 2 left and right." },
+        "overflow": {
+          "enum": ["shrink", "wrap", "truncate", "error"],
+          "description": "What to do when text does not fit. Default shrink."
+        },
+        "lineHeight": { "type": "number", "exclusiveMinimum": 0, "description": "Line spacing as a multiple of fontSize, for overflow: wrap. Default 1.15." },
+        "format": { "$ref": "#/$defs/format" },
+        "mark": { "enum": ["cross", "check", "dot", "fill"], "description": "Mark drawn in checkboxes and choice options. Default cross." },
+        "markInset": { "type": "number", "minimum": 0, "description": "Space between the box edge and the mark. Default 1." }
+      },
+      "additionalProperties": false
+    },
+
+    "styleRef": {
+      "description": "A named style, or an inline style (which may extend a named one).",
+      "oneOf": [{ "$ref": "#/$defs/identifier" }, { "$ref": "#/$defs/style" }]
+    },
+
+    "comb": {
+      "description": "Print one character per cell. Either cells spread evenly across the rect, or explicit groups of cells, e.g. an SSN printed as 3-2-4 digit groups.",
+      "type": "object",
+      "oneOf": [{ "required": ["cells"] }, { "required": ["groups"] }],
+      "properties": {
+        "cells": { "type": "integer", "minimum": 1 },
+        "groups": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["x", "width", "cells"],
+            "properties": {
+              "x": { "type": "number", "minimum": 0, "description": "Offset of the group from the rect's left edge." },
+              "width": { "type": "number", "exclusiveMinimum": 0 },
+              "cells": { "type": "integer", "minimum": 1 }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "fieldCommon": {
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "type": { "enum": ["text", "checkbox", "choice", "repeat"] },
+        "page": { "type": "integer", "minimum": 1, "description": "1-based page number. Omitted inside a repeat (inherited)." },
+        "label": { "type": "string", "description": "Human-readable name, typically the line number and caption printed on the form." },
+        "description": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "when": { "$ref": "#/$defs/condition", "description": "The field is printed only if this condition holds." }
+      }
+    },
+
+    "field": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": { "type": { "enum": ["text", "checkbox", "choice", "repeat"] } },
+      "allOf": [
+        { "if": { "properties": { "type": { "const": "text" } } }, "then": { "$ref": "#/$defs/textField" } },
+        { "if": { "properties": { "type": { "const": "checkbox" } } }, "then": { "$ref": "#/$defs/checkboxField" } },
+        { "if": { "properties": { "type": { "const": "choice" } } }, "then": { "$ref": "#/$defs/choiceField" } },
+        { "if": { "properties": { "type": { "const": "repeat" } } }, "then": { "$ref": "#/$defs/repeatField" } }
+      ]
+    },
+
+    "textField": {
+      "description": "Prints a formatted value inside a box.",
+      "allOf": [{ "$ref": "#/$defs/fieldCommon" }],
+      "required": ["rect", "source"],
+      "properties": {
+        "rect": { "$ref": "#/$defs/rect" },
+        "source": { "$ref": "#/$defs/source" },
+        "style": { "$ref": "#/$defs/styleRef" },
+        "comb": { "$ref": "#/$defs/comb" },
+        "required": { "type": "boolean", "description": "Report an error if the value is missing. Default false." }
+      },
+      "unevaluatedProperties": false
+    },
+
+    "checkboxField": {
+      "description": "Draws a mark in a box when a condition holds.",
+      "allOf": [{ "$ref": "#/$defs/fieldCommon" }],
+      "required": ["rect", "checked"],
+      "properties": {
+        "rect": { "$ref": "#/$defs/rect" },
+        "checked": { "$ref": "#/$defs/condition" },
+        "style": { "$ref": "#/$defs/styleRef" }
+      },
+      "unevaluatedProperties": false
+    },
+
+    "choiceField": {
+      "description": "A group of boxes of which the one(s) matching the value get a mark, e.g. filing status.",
+      "allOf": [{ "$ref": "#/$defs/fieldCommon" }],
+      "required": ["source", "options"],
+      "properties": {
+        "source": { "$ref": "#/$defs/source" },
+        "options": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["value", "rect"],
+            "properties": {
+              "value": { "type": ["string", "number", "boolean"] },
+              "rect": { "$ref": "#/$defs/rect" },
+              "label": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "style": { "$ref": "#/$defs/styleRef" },
+        "required": { "type": "boolean" }
+      },
+      "unevaluatedProperties": false
+    },
+
+    "repeatField": {
+      "description": "Prints a list (e.g. dependents) into repeated rows or columns. Child fields are positioned for the first item; each later item is shifted by offset (or offsets[i]).",
+      "allOf": [{ "$ref": "#/$defs/fieldCommon" }],
+      "required": ["source", "maxItems", "fields"],
+      "oneOf": [{ "required": ["offset"] }, { "required": ["offsets"] }],
+      "properties": {
+        "source": { "$ref": "#/$defs/source" },
+        "maxItems": { "type": "integer", "minimum": 1, "description": "How many items fit on the form." },
+        "offset": { "$ref": "#/$defs/offset", "description": "Shift between consecutive items." },
+        "offsets": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/offset" },
+          "description": "Explicit shift of each item from item 0, for unevenly spaced rows. Must have maxItems entries; the first is normally {x: 0, y: 0}."
+        },
+        "overflow": {
+          "type": "object",
+          "properties": {
+            "strategy": {
+              "enum": ["error", "truncate", "statement"],
+              "description": "error: refuse to print. truncate: print the first maxItems and warn. statement: print the first maxItems and list the rest on an appended continuation statement. Default error."
+            },
+            "title": { "type": "string", "description": "Heading of the continuation statement." }
+          },
+          "required": ["strategy"],
+          "additionalProperties": false
+        },
+        "fields": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/field", "not": { "required": ["page"] } }
+        }
+      },
+      "unevaluatedProperties": false
+    }
+  }
+}

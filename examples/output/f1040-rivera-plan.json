@@ -1,0 +1,1751 @@
+{
+  "form": "irs-1040-2025",
+  "coordinates": {
+    "unit": "pt",
+    "origin": "top-left"
+  },
+  "ops": [
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "primaryFirstName",
+      "x": 38.0,
+      "baseline": 104.231,
+      "text": "Jordan A",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "primaryLastName",
+      "x": 255.0,
+      "baseline": 104.231,
+      "text": "Rivera",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "primarySsn",
+      "x": 471.275,
+      "baseline": 103.81,
+      "text": "4",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "primarySsn",
+      "x": 481.825,
+      "baseline": 103.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "primarySsn",
+      "x": 492.375,
+      "baseline": 103.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "primarySsn",
+      "x": 503.075,
+      "baseline": 103.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "primarySsn",
+      "x": 513.925,
+      "baseline": 103.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "primarySsn",
+      "x": 526.056,
+      "baseline": 103.81,
+      "text": "1",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "primarySsn",
+      "x": 539.469,
+      "baseline": 103.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "primarySsn",
+      "x": 552.881,
+      "baseline": 103.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "primarySsn",
+      "x": 566.294,
+      "baseline": 103.81,
+      "text": "1",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "spouseFirstName",
+      "x": 38.0,
+      "baseline": 128.231,
+      "text": "Samantha K",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "spouseLastName",
+      "x": 255.0,
+      "baseline": 128.231,
+      "text": "Rivera-Okafor",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "spouseSsn",
+      "x": 471.275,
+      "baseline": 127.81,
+      "text": "4",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "spouseSsn",
+      "x": 481.825,
+      "baseline": 127.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "spouseSsn",
+      "x": 492.375,
+      "baseline": 127.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "spouseSsn",
+      "x": 503.075,
+      "baseline": 127.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "spouseSsn",
+      "x": 513.925,
+      "baseline": 127.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "spouseSsn",
+      "x": 526.056,
+      "baseline": 127.81,
+      "text": "1",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "spouseSsn",
+      "x": 539.469,
+      "baseline": 127.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "spouseSsn",
+      "x": 552.881,
+      "baseline": 127.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "spouseSsn",
+      "x": 566.294,
+      "baseline": 127.81,
+      "text": "2",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "street",
+      "x": 38.0,
+      "baseline": 152.231,
+      "text": "1200 Market Street",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "apartment",
+      "x": 437.422,
+      "baseline": 152.231,
+      "text": "5B",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "city",
+      "x": 38.0,
+      "baseline": 176.231,
+      "text": "San Francisco",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "state",
+      "x": 357.474,
+      "baseline": 176.231,
+      "text": "CA",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "zip",
+      "x": 408.108,
+      "baseline": 176.231,
+      "text": "94102-1234",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "mainHomeInUS",
+      "rect": {
+        "x": 568.0,
+        "y": 146.75,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "campaignPrimary",
+      "rect": {
+        "x": 482.4,
+        "y": 194.5,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "filingStatus",
+      "rect": {
+        "x": 97.6,
+        "y": 218.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "digitalAssets",
+      "rect": {
+        "x": 554.4,
+        "y": 287.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "moreThanFourDependents",
+      "rect": {
+        "x": 79.7,
+        "y": 368.5,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[0].firstName",
+      "x": 147.0,
+      "baseline": 318.231,
+      "text": "Maya",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[0].lastName",
+      "x": 147.0,
+      "baseline": 330.231,
+      "text": "Rivera",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[0].ssn",
+      "x": 147.875,
+      "baseline": 341.81,
+      "text": "4",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[0].ssn",
+      "x": 159.625,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[0].ssn",
+      "x": 171.375,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[0].ssn",
+      "x": 183.325,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[0].ssn",
+      "x": 195.475,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[0].ssn",
+      "x": 207.388,
+      "baseline": 341.81,
+      "text": "2",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[0].ssn",
+      "x": 219.063,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[0].ssn",
+      "x": 230.738,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[0].ssn",
+      "x": 242.413,
+      "baseline": 341.81,
+      "text": "1",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[0].relationship",
+      "x": 147.0,
+      "baseline": 354.231,
+      "text": "Daughter",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "dependents[0].livedWithYou",
+      "rect": {
+        "x": 169.6,
+        "y": 359.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "dependents[0].livedInUS",
+      "rect": {
+        "x": 169.6,
+        "y": 371.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "dependents[0].credit",
+      "rect": {
+        "x": 148.0,
+        "y": 404.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[1].firstName",
+      "x": 255.0,
+      "baseline": 318.231,
+      "text": "Leo",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[1].lastName",
+      "x": 255.0,
+      "baseline": 330.231,
+      "text": "Rivera",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[1].ssn",
+      "x": 255.875,
+      "baseline": 341.81,
+      "text": "4",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[1].ssn",
+      "x": 267.625,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[1].ssn",
+      "x": 279.375,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[1].ssn",
+      "x": 291.325,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[1].ssn",
+      "x": 303.475,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[1].ssn",
+      "x": 315.387,
+      "baseline": 341.81,
+      "text": "2",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[1].ssn",
+      "x": 327.062,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[1].ssn",
+      "x": 338.738,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[1].ssn",
+      "x": 350.413,
+      "baseline": 341.81,
+      "text": "2",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[1].relationship",
+      "x": 255.0,
+      "baseline": 354.231,
+      "text": "Son",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "dependents[1].livedWithYou",
+      "rect": {
+        "x": 277.6,
+        "y": 359.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "dependents[1].livedInUS",
+      "rect": {
+        "x": 277.6,
+        "y": 371.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "dependents[1].credit",
+      "rect": {
+        "x": 256.0,
+        "y": 404.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[2].firstName",
+      "x": 363.0,
+      "baseline": 318.231,
+      "text": "Amara",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[2].lastName",
+      "x": 363.0,
+      "baseline": 330.231,
+      "text": "Okafor",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[2].ssn",
+      "x": 363.875,
+      "baseline": 341.81,
+      "text": "4",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[2].ssn",
+      "x": 375.625,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[2].ssn",
+      "x": 387.375,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[2].ssn",
+      "x": 399.325,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[2].ssn",
+      "x": 411.475,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[2].ssn",
+      "x": 423.387,
+      "baseline": 341.81,
+      "text": "2",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[2].ssn",
+      "x": 435.062,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[2].ssn",
+      "x": 446.738,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[2].ssn",
+      "x": 458.413,
+      "baseline": 341.81,
+      "text": "3",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[2].relationship",
+      "x": 363.0,
+      "baseline": 354.231,
+      "text": "Stepdaughter",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "dependents[2].livedWithYou",
+      "rect": {
+        "x": 385.6,
+        "y": 359.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "dependents[2].livedInUS",
+      "rect": {
+        "x": 385.6,
+        "y": 371.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "dependents[2].fullTimeStudent",
+      "rect": {
+        "x": 364.0,
+        "y": 383.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "dependents[2].credit",
+      "rect": {
+        "x": 414.4,
+        "y": 404.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[3].firstName",
+      "x": 471.0,
+      "baseline": 318.231,
+      "text": "Grace",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[3].lastName",
+      "x": 471.0,
+      "baseline": 330.231,
+      "text": "Okafor",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[3].ssn",
+      "x": 471.875,
+      "baseline": 341.81,
+      "text": "4",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[3].ssn",
+      "x": 483.625,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[3].ssn",
+      "x": 495.375,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[3].ssn",
+      "x": 507.325,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[3].ssn",
+      "x": 519.475,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[3].ssn",
+      "x": 531.387,
+      "baseline": 341.81,
+      "text": "2",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[3].ssn",
+      "x": 543.062,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[3].ssn",
+      "x": 554.737,
+      "baseline": 341.81,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[3].ssn",
+      "x": 566.412,
+      "baseline": 341.81,
+      "text": "4",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "dependents[3].relationship",
+      "x": 471.0,
+      "baseline": 354.231,
+      "text": "Mother-in-law",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "dependents[3].livedWithYou",
+      "rect": {
+        "x": 493.6,
+        "y": 359.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "dependents[3].livedInUS",
+      "rect": {
+        "x": 493.6,
+        "y": 371.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "dependents[3].disabled",
+      "rect": {
+        "x": 522.4,
+        "y": 383.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 1,
+      "field": "dependents[3].credit",
+      "rect": {
+        "x": 522.4,
+        "y": 404.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "line1a",
+      "x": 541.474,
+      "baseline": 459.231,
+      "text": "229,671",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "line1z",
+      "x": 541.474,
+      "baseline": 567.231,
+      "text": "229,671",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "line2a",
+      "x": 306.238,
+      "baseline": 579.231,
+      "text": "310",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "line2b",
+      "x": 551.482,
+      "baseline": 579.231,
+      "text": "1,860",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "line3a",
+      "x": 298.732,
+      "baseline": 591.231,
+      "text": "2,981",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "line3b",
+      "x": 551.482,
+      "baseline": 591.231,
+      "text": "3,413",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "line7a",
+      "x": 545.488,
+      "baseline": 699.231,
+      "text": "(1,250)",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "line9",
+      "x": 541.474,
+      "baseline": 735.231,
+      "text": "233,694",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 1,
+      "field": "line11a",
+      "x": 541.474,
+      "baseline": 759.231,
+      "text": "233,694",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line11b",
+      "x": 541.474,
+      "baseline": 45.231,
+      "text": "233,694",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 2,
+      "field": "line12dYouBornBefore1961",
+      "rect": {
+        "x": 153.2,
+        "y": 74.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line12e",
+      "x": 546.478,
+      "baseline": 105.231,
+      "text": "33,100",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line13b",
+      "x": 558.988,
+      "baseline": 129.231,
+      "text": "900",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line14",
+      "x": 546.478,
+      "baseline": 141.231,
+      "text": "34,000",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line15",
+      "x": 541.474,
+      "baseline": 153.231,
+      "text": "199,694",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line16",
+      "x": 546.478,
+      "baseline": 165.231,
+      "text": "33,316",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line18",
+      "x": 546.478,
+      "baseline": 189.231,
+      "text": "33,316",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line19",
+      "x": 551.482,
+      "baseline": 201.231,
+      "text": "5,900",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line21",
+      "x": 551.482,
+      "baseline": 225.231,
+      "text": "5,900",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line22",
+      "x": 546.478,
+      "baseline": 237.231,
+      "text": "27,416",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line24",
+      "x": 546.478,
+      "baseline": 261.231,
+      "text": "27,416",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line25a",
+      "x": 452.128,
+      "baseline": 285.231,
+      "text": "34,180",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line25d",
+      "x": 546.478,
+      "baseline": 321.231,
+      "text": "34,180",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line26",
+      "x": 551.482,
+      "baseline": 333.231,
+      "text": "2,000",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line33",
+      "x": 546.478,
+      "baseline": 477.231,
+      "text": "36,180",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line34",
+      "x": 551.482,
+      "baseline": 489.231,
+      "text": "8,764",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "line35a",
+      "x": 551.482,
+      "baseline": 501.231,
+      "text": "8,764",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "routingNumber",
+      "x": 184.2,
+      "baseline": 512.31,
+      "text": "1",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "routingNumber",
+      "x": 198.6,
+      "baseline": 512.31,
+      "text": "2",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "routingNumber",
+      "x": 213.0,
+      "baseline": 512.31,
+      "text": "3",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "routingNumber",
+      "x": 227.4,
+      "baseline": 512.31,
+      "text": "4",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "routingNumber",
+      "x": 241.8,
+      "baseline": 512.31,
+      "text": "5",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "routingNumber",
+      "x": 256.2,
+      "baseline": 512.31,
+      "text": "6",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "routingNumber",
+      "x": 270.6,
+      "baseline": 512.31,
+      "text": "7",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "routingNumber",
+      "x": 285.0,
+      "baseline": 512.31,
+      "text": "8",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "routingNumber",
+      "x": 299.4,
+      "baseline": 512.31,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 2,
+      "field": "accountType",
+      "rect": {
+        "x": 377.4,
+        "y": 506.0,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "accountNumber",
+      "x": 184.2,
+      "baseline": 524.31,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "accountNumber",
+      "x": 198.6,
+      "baseline": 524.31,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "accountNumber",
+      "x": 213.0,
+      "baseline": 524.31,
+      "text": "0",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "accountNumber",
+      "x": 227.4,
+      "baseline": 524.31,
+      "text": "1",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "accountNumber",
+      "x": 241.8,
+      "baseline": 524.31,
+      "text": "2",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "accountNumber",
+      "x": 256.2,
+      "baseline": 524.31,
+      "text": "3",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "accountNumber",
+      "x": 270.6,
+      "baseline": 524.31,
+      "text": "4",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "accountNumber",
+      "x": 285.0,
+      "baseline": 524.31,
+      "text": "5",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "accountNumber",
+      "x": 299.4,
+      "baseline": 524.31,
+      "text": "6",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "accountNumber",
+      "x": 313.8,
+      "baseline": 524.31,
+      "text": "7",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "accountNumber",
+      "x": 328.2,
+      "baseline": 524.31,
+      "text": "8",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "accountNumber",
+      "x": 342.6,
+      "baseline": 524.31,
+      "text": "9",
+      "font": "Courier",
+      "size": 10.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "mark",
+      "page": 2,
+      "field": "thirdPartyDesignee",
+      "rect": {
+        "x": 540.0,
+        "y": 577.75,
+        "width": 8.0,
+        "height": 8.0
+      },
+      "mark": "cross",
+      "inset": 1,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "primaryOccupation",
+      "x": 327.0,
+      "baseline": 659.231,
+      "text": "Software Engineer",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "primaryIpPin",
+      "x": 524.988,
+      "baseline": 663.231,
+      "text": "482913",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "spouseOccupation",
+      "x": 327.0,
+      "baseline": 689.231,
+      "text": "Pediatric Nurse",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "phone",
+      "x": 129.6,
+      "baseline": 705.231,
+      "text": "(415) 555-0142",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    },
+    {
+      "kind": "text",
+      "page": 2,
+      "field": "email",
+      "x": 326.0,
+      "baseline": 705.231,
+      "text": "jordan.rivera@example.com",
+      "font": "Helvetica",
+      "size": 9.0,
+      "color": "#000000"
+    }
+  ],
+  "statements": [
+    {
+      "title": "Form 1040 (2025): Dependents (continued)",
+      "columns": [
+        "First name",
+        "Last name",
+        "SSN",
+        "Relationship",
+        "Lived with you more than half of 2025",
+        "And in the U.S.",
+        "Full-time student",
+        "Permanently and totally disabled",
+        "Credit"
+      ],
+      "rows": [
+        [
+          "Theodore",
+          "Rivera",
+          "400002005",
+          "Nephew",
+          "X",
+          "X",
+          "X",
+          "",
+          "Credit for other dependents"
+        ]
+      ]
+    }
+  ],
+  "diagnostics": [
+    {
+      "severity": "info",
+      "code": "REPEAT_STATEMENT",
+      "field": "dependents",
+      "message": "5 items but only 4 fit on the form; 1 listed on a statement"
+    }
+  ]
+}

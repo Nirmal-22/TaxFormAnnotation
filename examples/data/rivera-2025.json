@@ -1,0 +1,146 @@
+{
+  "_comment": "Fictional married couple filing jointly with five dependents. Amounts are illustrative, not a tax computation. SSNs use group 00, which is never issued.",
+  "taxYear": 2025,
+  "filing": {
+    "status": "married_filing_jointly",
+    "digitalAssets": false,
+    "mainHomeInUS": true,
+    "presidentialElectionCampaign": { "primary": true, "spouse": false }
+  },
+  "household": {
+    "primary": {
+      "name": { "first": "Jordan", "middleInitial": "A", "last": "Rivera" },
+      "ssn": "400-00-1001",
+      "dateOfBirth": "1958-11-03",
+      "blind": false,
+      "occupation": "Software Engineer",
+      "identityProtectionPin": "482913",
+      "contact": { "phone": "415-555-0142", "email": "jordan.rivera@example.com" }
+    },
+    "spouse": {
+      "name": { "first": "Samantha", "middleInitial": "K", "last": "Rivera-Okafor" },
+      "ssn": "400-00-1002",
+      "dateOfBirth": "1987-02-19",
+      "blind": false,
+      "occupation": "Pediatric Nurse"
+    },
+    "address": {
+      "street": "1200 Market Street",
+      "apartment": "5B",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94102-1234"
+    },
+    "dependents": [
+      {
+        "name": { "first": "Maya", "last": "Rivera" },
+        "ssn": "400-00-2001",
+        "relationship": "Daughter",
+        "livedWithTaxpayer": true,
+        "livedInUS": true,
+        "fullTimeStudent": false,
+        "permanentlyDisabled": false,
+        "credit": "child_tax_credit"
+      },
+      {
+        "name": { "first": "Leo", "last": "Rivera" },
+        "ssn": "400-00-2002",
+        "relationship": "Son",
+        "livedWithTaxpayer": true,
+        "livedInUS": true,
+        "fullTimeStudent": false,
+        "permanentlyDisabled": false,
+        "credit": "child_tax_credit"
+      },
+      {
+        "name": { "first": "Amara", "last": "Okafor" },
+        "ssn": "400-00-2003",
+        "relationship": "Stepdaughter",
+        "livedWithTaxpayer": true,
+        "livedInUS": true,
+        "fullTimeStudent": true,
+        "permanentlyDisabled": false,
+        "credit": "credit_for_other_dependents"
+      },
+      {
+        "name": { "first": "Grace", "last": "Okafor" },
+        "ssn": "400-00-2004",
+        "relationship": "Mother-in-law",
+        "livedWithTaxpayer": true,
+        "livedInUS": true,
+        "fullTimeStudent": false,
+        "permanentlyDisabled": true,
+        "credit": "credit_for_other_dependents"
+      },
+      {
+        "name": { "first": "Theodore", "last": "Rivera" },
+        "ssn": "400-00-2005",
+        "relationship": "Nephew",
+        "livedWithTaxpayer": true,
+        "livedInUS": true,
+        "fullTimeStudent": true,
+        "permanentlyDisabled": false,
+        "credit": "credit_for_other_dependents"
+      }
+    ]
+  },
+  "documents": {
+    "w2": [
+      {
+        "owner": "primary",
+        "employer": { "name": "Northwind Analytics Inc.", "ein": "12-3456789" },
+        "boxes": { "1": 148250.67, "2": 24310.10 }
+      },
+      {
+        "owner": "spouse",
+        "employer": { "name": "Bay Children's Hospital", "ein": "98-7654321" },
+        "boxes": { "1": 81420.35, "2": 9870.00 }
+      }
+    ],
+    "1099": [
+      { "form": "INT", "payer": { "name": "First Harbor Bank" }, "boxes": { "1": 1204.18, "8": 310.00 } },
+      { "form": "INT", "payer": { "name": "TreasuryDirect" }, "boxes": { "1": 655.40 } },
+      { "form": "DIV", "payer": { "name": "Evergreen Index Funds" }, "boxes": { "1a": 3412.77, "1b": 2981.02 } }
+    ]
+  },
+  "calculation": {
+    "form1040": {
+      "1z": 229671,
+      "7a": -1250,
+      "8": 0,
+      "9": 233694,
+      "10": 0,
+      "11a": 233694,
+      "11b": 233694,
+      "12e": 33100,
+      "13a": 0,
+      "13b": 900,
+      "14": 34000,
+      "15": 199694,
+      "16": 33316,
+      "17": 0,
+      "18": 33316,
+      "19": 5900,
+      "20": 0,
+      "21": 5900,
+      "22": 27416,
+      "23": 0,
+      "24": 27416,
+      "25d": 34180,
+      "26": 2000,
+      "32": 0,
+      "33": 36180,
+      "34": 8764,
+      "35a": 8764,
+      "checks": {}
+    }
+  },
+  "refund": {
+    "directDeposit": {
+      "routingNumber": "123456780",
+      "accountNumber": "000123456789",
+      "accountType": "checking"
+    }
+  },
+  "thirdPartyDesignee": { "allow": false }
+}

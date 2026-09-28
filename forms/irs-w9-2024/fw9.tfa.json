@@ -1,0 +1,201 @@
+{
+  "$schema": "../../schema/tfa.schema.json",
+  "specVersion": "1.0",
+  "form": {
+    "id": "irs-w9-2024-03",
+    "title": "Request for Taxpayer Identification Number and Certification",
+    "issuer": "IRS",
+    "formNumber": "W-9",
+    "revision": "Rev. March 2024",
+    "source": {
+      "file": "fw9.pdf",
+      "url": "https://www.irs.gov/pub/irs-pdf/fw9.pdf",
+      "sha256": "2d420cbb4123dcf1fb82595b2359cfbb5d81f00b9df9d359fcc7af361d093f53"
+    },
+    "pages": [
+      { "width": 611.976, "height": 791.968 },
+      { "width": 611.976, "height": 791.968 },
+      { "width": 611.976, "height": 791.968 },
+      { "width": 611.976, "height": 791.968 },
+      { "width": 611.976, "height": 791.968 },
+      { "width": 611.976, "height": 791.968 }
+    ]
+  },
+  "coordinates": { "unit": "pt", "origin": "top-left" },
+  "styles": {
+    "default": { "font": "Helvetica", "fontSize": 10, "padding": { "top": 1, "right": 3, "bottom": 1, "left": 3 } },
+    "center": { "align": "center" },
+    "comb": { "font": "Courier", "fontSize": 12 },
+    "block": { "fontSize": 9, "overflow": "wrap", "valign": "top", "padding": 3 }
+  },
+  "fields": [
+    {
+      "id": "name",
+      "type": "text",
+      "page": 1,
+      "label": "1 Name of entity/individual",
+      "rect": { "x": 58.6, "y": 118.0, "width": 517.4, "height": 14.0 },
+      "source": { "path": "$.entity.legalName" },
+      "required": true
+    },
+    {
+      "id": "businessName",
+      "type": "text",
+      "page": 1,
+      "label": "2 Business name/disregarded entity name, if different from above",
+      "rect": { "x": 58.6, "y": 142.0, "width": 517.4, "height": 14.0 },
+      "source": { "path": "$.entity.businessName" }
+    },
+    {
+      "id": "taxClassification",
+      "type": "choice",
+      "page": 1,
+      "label": "3a Federal tax classification",
+      "source": { "path": "$.entity.taxClassification" },
+      "options": [
+        { "value": "individual", "label": "Individual/sole proprietor", "rect": { "x": 73.0, "y": 180.25, "width": 8.0, "height": 8.0 } },
+        { "value": "c_corporation", "label": "C corporation", "rect": { "x": 180.0, "y": 180.25, "width": 8.0, "height": 8.0 } },
+        { "value": "s_corporation", "label": "S corporation", "rect": { "x": 252.0, "y": 180.25, "width": 8.0, "height": 8.0 } },
+        { "value": "partnership", "label": "Partnership", "rect": { "x": 324.0, "y": 180.25, "width": 8.0, "height": 8.0 } },
+        { "value": "trust_estate", "label": "Trust/estate", "rect": { "x": 388.8, "y": 180.25, "width": 8.0, "height": 8.0 } },
+        { "value": "llc", "label": "LLC", "rect": { "x": 73.0, "y": 193.5, "width": 8.0, "height": 8.0 } },
+        { "value": "other", "label": "Other", "rect": { "x": 73.0, "y": 230.0, "width": 8.0, "height": 8.0 } }
+      ],
+      "required": true
+    },
+    {
+      "id": "llcTaxClassification",
+      "type": "text",
+      "page": 1,
+      "label": "3a LLC tax classification (C, S or P)",
+      "rect": { "x": 417.6, "y": 192.0, "width": 28.8, "height": 11.0 },
+      "source": {
+        "path": "$.entity.llcTaxClassification",
+        "transform": [{ "op": "map", "values": { "c_corporation": "C", "s_corporation": "S", "partnership": "P" } }]
+      },
+      "when": { "path": "$.entity.taxClassification", "op": "eq", "value": "llc" },
+      "style": "center",
+      "required": true
+    },
+    {
+      "id": "otherClassification",
+      "type": "text",
+      "page": 1,
+      "label": "3a Other (see instructions)",
+      "rect": { "x": 162.4, "y": 228.0, "width": 284.0, "height": 12.0 },
+      "source": { "path": "$.entity.otherClassification" },
+      "when": { "path": "$.entity.taxClassification", "op": "eq", "value": "other" },
+      "required": true
+    },
+    {
+      "id": "foreignPartners",
+      "type": "checkbox",
+      "page": 1,
+      "label": "3b Has foreign partners, owners, or beneficiaries",
+      "rect": { "x": 440.6, "y": 263.0, "width": 8.0, "height": 8.0 },
+      "checked": { "path": "$.entity.hasForeignPartners", "op": "truthy" },
+      "when": { "path": "$.entity.taxClassification", "op": "in", "value": ["partnership", "trust_estate", "llc"] }
+    },
+    {
+      "id": "exemptPayeeCode",
+      "type": "text",
+      "page": 1,
+      "label": "4 Exempt payee code (if any)",
+      "rect": { "x": 543.6, "y": 192.0, "width": 32.4, "height": 12.0 },
+      "source": { "path": "$.entity.exemptions.payeeCode" },
+      "style": "center"
+    },
+    {
+      "id": "fatcaCode",
+      "type": "text",
+      "page": 1,
+      "label": "4 Exemption from FATCA reporting code (if any)",
+      "rect": { "x": 500.6, "y": 228.0, "width": 75.4, "height": 12.0 },
+      "source": { "path": "$.entity.exemptions.fatcaCode" },
+      "style": "center"
+    },
+    {
+      "id": "address",
+      "type": "text",
+      "page": 1,
+      "label": "5 Address (number, street, and apt. or suite no.)",
+      "rect": { "x": 58.6, "y": 286.0, "width": 329.45, "height": 14.0 },
+      "source": { "template": "{$.entity.address.line1} {$.entity.address.line2}" },
+      "required": true
+    },
+    {
+      "id": "cityStateZip",
+      "type": "text",
+      "page": 1,
+      "label": "6 City, state, and ZIP code",
+      "rect": { "x": 58.6, "y": 310.0, "width": 329.45, "height": 14.0 },
+      "source": { "template": "{$.entity.address.city}, {$.entity.address.state} {$.entity.address.zip}" },
+      "required": true
+    },
+    {
+      "id": "requester",
+      "type": "text",
+      "page": 1,
+      "label": "Requester's name and address (optional)",
+      "rect": { "x": 389.8, "y": 286.0, "width": 186.2, "height": 38.0 },
+      "source": {
+        "template": "{$.requester.name}\n{$.requester.address.line1} {$.requester.address.line2}\n{$.requester.address.city}, {$.requester.address.state} {$.requester.address.zip}"
+      },
+      "style": "block"
+    },
+    {
+      "id": "accountNumbers",
+      "type": "text",
+      "page": 1,
+      "label": "7 List account number(s) here (optional)",
+      "rect": { "x": 58.6, "y": 334.0, "width": 517.4, "height": 14.0 },
+      "source": { "path": "$.entity.accountNumbers[*]", "aggregate": "join", "separator": ", " }
+    },
+    {
+      "id": "ssn",
+      "type": "text",
+      "page": 1,
+      "label": "Part I Social security number",
+      "description": "The form prints three separate digit boxes with dashes between them; one comb field with three groups keeps the SSN a single value.",
+      "rect": { "x": 417.6, "y": 372.0, "width": 158.4, "height": 24.0 },
+      "comb": {
+        "groups": [
+          { "x": 0, "width": 43.2, "cells": 3 },
+          { "x": 57.6, "width": 28.8, "cells": 2 },
+          { "x": 100.8, "width": 57.6, "cells": 4 }
+        ]
+      },
+      "source": { "path": "$.entity.tin.value", "transform": [{ "op": "digits" }] },
+      "when": { "path": "$.entity.tin.type", "op": "eq", "value": "ssn" },
+      "style": "comb",
+      "required": true
+    },
+    {
+      "id": "ein",
+      "type": "text",
+      "page": 1,
+      "label": "Part I Employer identification number",
+      "rect": { "x": 417.6, "y": 420.0, "width": 144.0, "height": 24.0 },
+      "comb": {
+        "groups": [
+          { "x": 0, "width": 28.8, "cells": 2 },
+          { "x": 43.2, "width": 100.8, "cells": 7 }
+        ]
+      },
+      "source": { "path": "$.entity.tin.value", "transform": [{ "op": "digits" }] },
+      "when": { "path": "$.entity.tin.type", "op": "eq", "value": "ein" },
+      "style": "comb",
+      "required": true
+    },
+    {
+      "id": "signatureDate",
+      "type": "text",
+      "page": 1,
+      "label": "Sign Here: Date",
+      "description": "The PDF has no widget here; measured by hand with `tfa grid`.",
+      "rect": { "x": 408.0, "y": 582.0, "width": 168.0, "height": 16.0 },
+      "source": { "path": "$.certification.date" },
+      "style": { "format": { "type": "date", "pattern": "MM/DD/YYYY" } }
+    }
+  ]
+}
